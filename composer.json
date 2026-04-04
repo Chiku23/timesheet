@@ -1,0 +1,16 @@
+{
+    "name": "chiku/corephp",
+    "description": "Basic Core PHP Application.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Chiku\\Corephp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chiku"
+        }
+    ],
+    "require": {}
+}
