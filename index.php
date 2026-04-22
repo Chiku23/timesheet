@@ -13,7 +13,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Global arrays for assets
 $cssFiles = ['/assets/css/global.css']; // Add global CSS here
-$jsFiles = ['/assets/js/global.js'];    // Add global JS here
+$jsFiles = [
+    'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js',
+    '/assets/js/global.js'
+];    // Add global JS here
 
 /**
  * Dynamically loads a component and auto-registers its CSS/JS if they exist.
