@@ -1,0 +1,99 @@
+/* 
+======================================
+* Dark Theme CSS Overrides 
+======================================
+*/
+.theme-dark {
+    --bg: #0f111a;
+    --surface: #1a1d2e;
+    --surface-hover: #23273e;
+    --text-main: #f5f5f5;
+    --text-muted: #9197B3;
+    --modal-shadow: rgba(0, 0, 0, 0.45);
+}
+
+body.theme-dark {
+    background-color: var(--bg);
+    color: var(--text-main);
+}
+
+.theme-dark a:hover {
+    color: var(--white);
+}
+
+/* Header Overide */
+.theme-dark header {
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--border-dark);
+    color: var(--white);
+}
+
+.theme-dark header ul li a:hover,
+.theme-dark .nav-logout:hover {
+    background-color: var(--secondary);
+}
+
+.theme-dark .profile {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.theme-dark .theme-toggle-btn {
+    background-color: var(--secondary);
+    border-color: var(--border-dark);
+    color: var(--white);
+}
+
+.theme-dark .theme-toggle-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Footer Override */
+.theme-dark footer {
+    background-color: var(--primary);
+    border-top: 1px solid var(--border-dark);
+    color: var(--text-muted);
+}
+
+/* Timer and Modal Dark Mode */
+.theme-dark .floatingBtn {
+    background-color: var(--secondary);
+    border-color: var(--border-dark);
+}
+
+.theme-dark .floatingBtn:hover {
+    background-color: var(--primary-dark);
+}
+
+.theme-dark .timer-modal {
+    background-color: var(--surface);
+    border-color: var(--border-dark);
+}
+
+.theme-dark .time-box {
+    background-color: var(--secondary);
+    border-color: var(--border-dark);
+    color: var(--white);
+}
+
+.theme-dark .time-box .colon {
+    color: var(--text-muted);
+}
+
+.theme-dark .timer-modal .action input {
+    background-color: var(--secondary);
+    border-color: var(--border-dark);
+    color: var(--white);
+}
+
+.theme-dark .timer-modal .action input:focus {
+    border-color: var(--primary-light);
+}
+
+.theme-dark .modal-close {
+    color: var(--text-muted);
+}
+
+.theme-dark .modal-close:hover {
+    color: var(--danger);
+}

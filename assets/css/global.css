@@ -1,0 +1,426 @@
+/* Include CSS globalvars */
+@import "./globalvars.css";
+@import "./global-dark.css";
+
+/* 
+======================================
+* Default CSS Or Light Mode
+======================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    color: var(--text-main);
+}
+
+main {
+    flex: 1;
+}
+
+li,
+a {
+    text-decoration: none;
+}
+
+/* Footer CSS (Fixed at bottom of layout) */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: var(--white);
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+
+/* Header CSS */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-left h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.header-right {
+    gap: 16px;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header ul li a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+header ul li a:hover {
+    color: var(--text-main);
+    background-color: var(--gray-light);
+}
+
+.nav-logout {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--danger);
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.nav-logout:hover {
+    background-color: var(--gray-light);
+}
+
+.profile {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--gray-light);
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--border-light);
+}
+
+/* Show sun when dark mode, moon when light mode */
+.theme-icon {
+    display: none;
+    line-height: 1;
+}
+
+body:not(.theme-dark) .theme-toggle-btn .dark-icon {
+    display: inline-block;
+}
+
+body.theme-dark .theme-toggle-btn .light-icon {
+    display: inline-block;
+}
+
+/* Floating Button */
+.floatingBtn {
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--primary);
+    border: 2px solid var(--border-dark);
+    box-shadow: 0 4px 12px var(--modal-shadow);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.floatingBtn:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary);
+}
+
+.floatingBtn:active {
+    transform: scale(0.95);
+}
+
+.timerBtn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+/* Custom CSS Clock Face (No SVG) */
+.clock-face {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    position: relative;
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+}
+
+/* Top watch crown / knob */
+.clock-face::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 3px;
+    background-color: var(--white);
+    border-radius: 1px;
+}
+
+/* Center Pin */
+.clock-pin {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+/* Clock Hands */
+.clock-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background-color: var(--white);
+    border-radius: 2px;
+    transform-origin: bottom center;
+}
+
+.hand-hour {
+    width: 2px;
+    height: 7px;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.hand-minute {
+    width: 2px;
+    height: 10px;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+/* Animate the minute hand when timer is active */
+.timerBtn.active .hand-minute {
+    animation: rotateHand 2s linear infinite;
+}
+
+/* Pulsing effect when running */
+.timerBtn.active .clock-face {
+    animation: pulseRing 1.5s ease-in-out infinite;
+}
+
+@keyframes rotateHand {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+@keyframes pulseRing {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* Modal Backdrop */
+.timer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 150;
+    display: none;
+}
+
+.timer-backdrop.open {
+    display: block;
+}
+
+/* Timer Modal CSS */
+.timer-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    z-index: 160;
+    display: none;
+    flex-direction: column;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 12px;
+    padding: 24px;
+    background-color: var(--surface);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 10px 25px var(--modal-shadow);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+}
+
+.timer-modal.open {
+    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.timer-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.timer-modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.modal-close:hover {
+    color: var(--danger);
+}
+
+/* Time display digits */
+.time-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-light);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+}
+
+.time-box .colon {
+    margin: 0 4px;
+    color: var(--text-muted);
+}
+
+/* Action inputs & buttons */
+.timer-modal .action {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.timer-modal .action input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background-color: var(--white);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.timer-modal .action input:focus {
+    border-color: var(--primary);
+}
+
+.timer-modal .btn-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.timer-modal .btn-group button {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--white);
+    transition: background-color 0.2s ease;
+}
+
+.timer-modal .btn-start {
+    background-color: var(--success);
+}
+
+.timer-modal .btn-start:hover {
+    background-color: var(--success-hover);
+}
+
+.timer-modal .btn-stop {
+    background-color: var(--danger);
+}
+
+.timer-modal .btn-stop:hover {
+    background-color: var(--danger-hover);
+}
