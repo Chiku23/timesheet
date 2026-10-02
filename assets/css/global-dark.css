@@ -4,12 +4,16 @@
 ======================================
 */
 .theme-dark {
-    --bg: #0f111a;
-    --surface: #1a1d2e;
-    --surface-hover: #23273e;
-    --text-main: #f5f5f5;
-    --text-muted: #9197B3;
-    --modal-shadow: rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+    --bg: #111318;
+    --surface: #1a1c24;
+    --surface-hover: #22252e;
+    --text-main: #e5e7eb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --border-light: #2d3348;
+    --modal-shadow: rgba(0, 0, 0, 0.4);
+    --primary-subtle: rgba(79, 70, 229, 0.12);
 }
 
 body.theme-dark {
@@ -17,77 +21,103 @@ body.theme-dark {
     color: var(--text-main);
 }
 
-.theme-dark a:hover {
-    color: var(--white);
-}
-
-/* Header Overide */
+/* Header */
 .theme-dark header {
-    background-color: var(--primary);
-    border-bottom: 1px solid var(--border-dark);
-    color: var(--white);
+    background-color: var(--surface);
+    border-bottom-color: var(--border-light);
 }
 
-.theme-dark header ul li a:hover,
+.theme-dark .header-nav ul li a:hover,
 .theme-dark .nav-logout:hover {
-    background-color: var(--secondary);
+    background-color: var(--surface-hover);
 }
 
-.theme-dark .profile {
-    background-color: var(--primary-dark);
-    color: var(--white);
+.theme-dark .nav-active {
+    background-color: var(--surface-hover);
+    color: var(--text-main) !important;
+    border-color: var(--border-light);
+}
+
+.theme-dark .header-vdivider {
+    background-color: var(--border-light);
+}
+
+.theme-dark .user-name {
+    color: var(--text-main);
+}
+
+.theme-dark .profile,
+.theme-dark .profile-avatar {
+    background-color: var(--primary);
+    color: #ffffff;
 }
 
 .theme-dark .theme-toggle-btn {
-    background-color: var(--secondary);
-    border-color: var(--border-dark);
-    color: var(--white);
-}
-
-.theme-dark .theme-toggle-btn:hover {
-    background-color: var(--primary-dark);
-}
-
-/* Footer Override */
-.theme-dark footer {
-    background-color: var(--primary);
-    border-top: 1px solid var(--border-dark);
+    background-color: var(--surface-hover);
+    border-color: var(--border-light);
     color: var(--text-muted);
 }
 
-/* Timer and Modal Dark Mode */
-.theme-dark .floatingBtn {
-    background-color: var(--secondary);
-    border-color: var(--border-dark);
+.theme-dark .theme-toggle-btn:hover {
+    background-color: #2b2f3d;
+    color: var(--text-main);
+    border-color: #3b4259;
 }
 
-.theme-dark .floatingBtn:hover {
-    background-color: var(--primary-dark);
+.theme-dark .nav-logout-btn {
+    color: #f87171;
+}
+
+.theme-dark .nav-logout-btn:hover {
+    background-color: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* Footer */
+.theme-dark footer {
+    background-color: var(--surface);
+    border-top-color: var(--border-light);
+    color: var(--text-muted);
+}
+
+.theme-dark .footer-brand {
+    color: var(--text-main);
+}
+
+.theme-dark .footer-version-tag,
+.theme-dark .footer-status-pill {
+    background-color: var(--surface-hover);
+    border-color: var(--border-light);
+    color: var(--text-muted);
+}
+
+/* Timer and Modal */
+.theme-dark .floatingBtn {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
 .theme-dark .timer-modal {
     background-color: var(--surface);
-    border-color: var(--border-dark);
+    border-color: var(--border-light);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
 }
 
 .theme-dark .time-box {
-    background-color: var(--secondary);
-    border-color: var(--border-dark);
-    color: var(--white);
+    background-color: var(--bg);
+    border-color: var(--border-light);
+    color: var(--text-main);
 }
 
-.theme-dark .time-box .colon {
-    color: var(--text-muted);
+.theme-dark .timer-modal .action input,
+.theme-dark .timer-modal .action select {
+    background-color: var(--bg);
+    border-color: var(--border-light);
+    color: var(--text-main);
 }
 
-.theme-dark .timer-modal .action input {
-    background-color: var(--secondary);
-    border-color: var(--border-dark);
-    color: var(--white);
-}
-
-.theme-dark .timer-modal .action input:focus {
-    border-color: var(--primary-light);
+.theme-dark .timer-modal .action input:focus,
+.theme-dark .timer-modal .action select:focus {
+    border-color: var(--primary);
 }
 
 .theme-dark .modal-close {
@@ -95,5 +125,65 @@ body.theme-dark {
 }
 
 .theme-dark .modal-close:hover {
-    color: var(--danger);
+    color: var(--text-main);
+}
+
+/* Log Modal & Confirm Modal */
+.theme-dark .log-modal,
+.theme-dark .confirm-modal {
+    background-color: var(--surface);
+    border-color: var(--border-light);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.theme-dark .log-modal-header,
+.theme-dark .confirm-modal-header {
+    border-bottom-color: var(--border-light);
+}
+
+.theme-dark .log-form input,
+.theme-dark .log-form select {
+    background-color: var(--bg);
+    border-color: var(--border-light);
+    color: var(--text-main);
+}
+
+.theme-dark .log-form input:focus,
+.theme-dark .log-form select:focus {
+    border-color: var(--primary);
+}
+
+.theme-dark .duration-preview-card {
+    background-color: var(--bg);
+    border-color: var(--border-light);
+}
+
+.theme-dark .btn-cancel {
+    border-color: var(--border-light);
+    color: var(--text-muted);
+}
+
+.theme-dark .btn-cancel:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-main);
+}
+
+.theme-dark .color-picker-swatch {
+    background-color: var(--bg);
+    border-color: var(--border-light);
+}
+
+.theme-dark .color-hex-preview {
+    color: var(--text-muted);
+}
+
+.theme-dark .header-user-btn:hover,
+.theme-dark .header-user-btn-active {
+    background-color: var(--surface-hover);
+    border-color: var(--border-light);
+}
+
+.theme-dark .confirm-icon-box {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
 }

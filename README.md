@@ -1,94 +1,103 @@
 # TimeSheet
 
-A clean, modern, and lightweight Time-Tracking Web Application built with **PHP 8**, **Eloquent ORM**, and vanilla **HTML/CSS/JavaScript**.
+A clean, modern, and lightweight Time-Tracking Web Application built with **PHP 8**, **Eloquent ORM (MySQL)**, and vanilla **HTML5/CSS3/JavaScript**.
 
 ---
 
-## Features Planned & In Progress
+## Key Features
 
-- **Movable Floating Timer**: Pure CSS watch dial with real-time tracking and draggable modal popup (no external SVG required).
-- **Dynamic Theme Engine**: Light and Dark mode with solid flat color design tokens and `localStorage` persistence.
-- **Authentication & Roles**: Secure login system with distinct **Admin** and **User** access levels.
-- **Logs Management**: View, add, edit, and delete daily time logs.
-- **Dashboards**:
-  - **User Dashboard**: Individual timesheet entries and daily progress.
-  - **Admin Dashboard**: Team-wide time oversight, metrics, and user management.
-- **Reporting & Filtering**: Filter logged hours across Daily, Weekly, and Monthly windows.
-- **Export Engine**: Export time records to **CSV / Excel** and printable **PDF**.
+- **Server-Authoritative Floating Timer**: Draggable, non-blocking floating stopwatch launcher backed by `timer_sessions` table in MySQL. Sessions survive page refreshes, tab closures, and multi-device access.
+- **Dynamic Theme Engine**: Smooth dark and light mode toggle with flat, high-contrast design tokens and zero-flash `localStorage` persistence.
+- **Dual Timezone Engine**: Instant switching between **Local Browser Timezone** and **UTC (Universal Time)** across all dashboards, time ranges, and analytical charts.
+- **Authentication & User Registration**:
+  - Secure `/login` and `/signup` self-service registration.
+  - Role-based access control (**Admin** vs **User**).
+  - Clean authentication pages with extraneous navigation and footers suppressed.
+- **Dashboard & Timesheet Logging**:
+  - **Weekly Matrix View**: Daily breakdown with project totals and weekly target progress.
+  - **Paginated Detailed Logs Table**: Search by task description, filter by project and source (Timer vs Manual), with configurable page sizing (10, 25, 50).
+  - **Author-Only Deletion Safeguard**: Logs use soft-deletes (`deleted_at`), and employees can only edit/delete their own entries.
+- **Reports & Analytics**:
+  - Filterable by presets (This Week, This Month, Last Month) or custom date ranges.
+  - Daily tracked time bar chart with responsive horizontal scrolling for extended periods.
+  - Time by project breakdown with color indicators.
+  - Paginated Period Time Logs table.
+- **CSV Data Export**: One-click download of filtered timesheet data directly formatted as CSV.
+- **Admin Panel & Dedicated Management Views**:
+  - Team member oversight, activity metrics, and role management.
+  - Dedicated full-page user editor (`/admin/user-edit?id=X`) replacing disruptive popups.
+- **Self-Service Account Settings**: Profile modal for name, email, and password updates with validation.
+- **Global Confirmation Modal**: Centralized custom modal dialogs replacing native browser `window.confirm()`.
 
 ---
 
-## How It Is Built
+## Architecture & Technology Stack
 
-### 1. Architecture & Design Patterns
-- **Component-Driven Core**: Uses an auto-discovering component system (`loadComponent()`) in `index.php` that dynamically registers matching `.css` and `.js` files for each component on demand.
-- **Micro-Router (`src/router.php`)**: Handles clean URL path matching (`/`, `/login`, `/admin`, etc.) with fallback to a 404 handler and built-in CLI static file passthrough.
-- **Output Buffering Layout (`src/app.php`)**: Captures routed view output into buffer, cleanly inserting discovered stylesheets in the `<head>` and scripts before `</body>`.
-- **Database Layer**: Powered by `illuminate/database` (Eloquent ORM) for clean database modeling and query execution.
-- **Zero-Dependency Frontend**: Pure CSS variables (`assets/css/globalvars.css`, `assets/css/global-dark.css`) and modular vanilla JavaScript.
+### 1. Architecture Patterns
+- **Component-Driven Pipeline (`loadComponent()`)**: Dynamically discovers and auto-registers matching `.css` and `.js` assets for each page or component on demand.
+- **Micro-Router (`src/router.php`)**: Handles HTML page routing, route authorization guards, and admin privileges.
+- **RESTful API Router (`src/api.php`)**: Independent API routing terminating before the HTML layout pipeline, returning JSON responses.
+- **Database Layer**: Powered by `illuminate/database` (Eloquent ORM) with MySQL. Models include `User`, `TimeLog`, `Project`, `TimerSession`, and `Setting`.
+- **Zero Heavy Frontend Dependencies**: Built entirely with clean vanilla JavaScript and modular CSS variables.
 
-### 2. Project Directory Structure
+### 2. Directory Structure
 ```text
 TimeSheet/
 ├── assets/
 │   ├── css/
-│   │   ├── globalvars.css       # Color palettes and theme tokens
+│   │   ├── globalvars.css       # Palette and design system tokens
 │   │   ├── global.css           # Layout, header, sticky footer, timer styling
 │   │   └── global-dark.css      # Dark theme overrides
+│   ├── images/
+│   │   └── logo.png             # Lightweight 64x64 TS brand logo
 │   └── js/
-│       └── global.js            # Theme toggling and timer counter logic
+│       └── global.js            # Timer state machine, timezone engine, modal system
 ├── Docs/
-│   └── PLAN.md                  # Comprehensive technical specification & roadmap
+│   ├── PLAN.md                  # Comprehensive project specification
+│   └── ARCHITECTURE_AND_LOGIC.md# Technical architecture and API documentation
 ├── src/
-│   ├── components/              # Reusable UI components (header, footer, modal)
-│   ├── pages/                   # Routable views (home, etc.)
-│   ├── app.php                  # Application wrapper & buffering
-│   └── router.php               # Route registry
-├── composer.json                # Composer dependencies and PSR-4 namespace
+│   ├── components/              # Header, footer, and navigation components
+│   ├── config/
+│   │   └── database.php         # Eloquent MySQL connection bootstrap
+│   ├── models/                  # Eloquent models (User, TimeLog, Project, etc.)
+│   ├── pages/                   # Routable views (home, login, signup, admin, reports, settings, profile)
+│   ├── api.php                  # API router and endpoints
+│   ├── app.php                  # Application buffer wrapper
+│   └── router.php               # Page route registry and guards
+├── composer.json                # Dependencies (illuminate/database)
 ├── index.php                    # Development server router entry
 └── README.md                    # Project documentation
 ```
 
 ---
 
-## Getting Started / How to Run
+## Getting Started
 
 ### Prerequisites
-- **PHP 8.1+** installed (e.g. from XAMPP or standalone). Verify with:
-  ```powershell
-  php -v
-  ```
-- **Composer** installed. Verify with:
-  ```powershell
-  composer -v
-  ```
+- **PHP 8.1+** (CLI & PDO MySQL enabled)
+- **MySQL / MariaDB** (via XAMPP or standalone service)
+- **Composer**
 
-### Installation
+### Setup & Running
 
-1. **Clone or navigate to the project directory**:
-   ```powershell
-   cd c:\Projects\TimeSheet
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Chiku23/timesheet.git
+   cd timesheet
    ```
 
-2. **Install PHP dependencies**:
-   ```powershell
+2. **Install Composer dependencies**:
+   ```bash
    composer install
    ```
 
-3. **Start the local development server**:
-   ```powershell
-   php -S 127.0.0.1:8080 index.php
+3. **Configure Database**:
+   Verify your MySQL database credentials in `src/config/database.php` (defaults to host `127.0.0.1`, database `timesheet`, username `root`, password empty).
+
+4. **Start the Development Server**:
+   ```bash
+   php -S 127.0.0.1:8081 index.php
    ```
 
-4. **Open in your browser**:
-   Navigate to:
-   ```text
-   http://127.0.0.1:8080
-   ```
-
----
-
-## Roadmap & Documentation
-
-For the complete architectural design, database schemas, and phase-by-phase implementation plan, see:
-- [Docs/PLAN.md](file:///c:/Projects/TimeSheet/Docs/PLAN.md)
+5. **Access Application**:
+   Open [http://127.0.0.1:8081](http://127.0.0.1:8081) in your browser.
