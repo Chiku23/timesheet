@@ -1,0 +1,295 @@
+/* ==========================================
+   Admin Dashboard Styles
+   Clean, flat, administrative styling (No gradients)
+   ========================================== */
+
+.admin-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+}
+
+.admin-header {
+    margin-bottom: 22px;
+}
+
+.admin-title-zone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-title-zone .page-icon {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.admin-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.admin-subtitle {
+    color: var(--text-muted);
+    font-size: 0.83rem;
+    margin-top: 2px;
+}
+
+/* ── Admin KPI Cards ── */
+.admin-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+    .admin-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-kpi {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.admin-kpi-value {
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+}
+
+.admin-kpi-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-muted);
+}
+
+/* Accent side-borders — flat, no gradients */
+.accent-indigo {
+    border-left: 3px solid var(--primary);
+}
+
+.accent-emerald {
+    border-left: 3px solid var(--success);
+}
+
+.accent-amber {
+    border-left: 3px solid var(--warning);
+}
+
+.accent-violet {
+    border-left: 3px solid #8b5cf6;
+}
+
+/* ── Two Column Layout (Members & Projects) ── */
+.admin-grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+    .admin-grid-two {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Admin Section ── */
+.admin-section {
+    background-color: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.admin-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+    background-color: var(--surface-hover);
+}
+
+.section-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+}
+
+.section-title-wrap h3 {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.btn-create-project {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: background-color 0.15s;
+}
+
+.btn-create-project:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ── Filters ── */
+.admin-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.admin-select,
+.admin-input {
+    padding: 6px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-family: var(--font-family);
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.admin-select:focus,
+.admin-input:focus {
+    border-color: var(--primary);
+}
+
+.admin-date-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.date-sep {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.btn-filter {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-filter:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ── Admin Table ── */
+.admin-table-wrapper {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+}
+
+.admin-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-light);
+    background-color: var(--surface);
+    white-space: nowrap;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.1s;
+}
+
+.admin-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--surface-hover);
+}
+
+.admin-table tbody td {
+    padding: 10px 14px;
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+/* Role badge */
+.role-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.role-admin {
+    background-color: rgba(225, 29, 72, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(225, 29, 72, 0.25);
+}
+
+.role-user {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+@media (max-width: 640px) {
+    .admin-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .admin-select,
+    .admin-input {
+        width: 100%;
+    }
+}

@@ -1,0 +1,555 @@
+/* ==========================================
+   Reports Page Styles
+   Clean, flat, modern analytics (No gradients)
+   ========================================== */
+
+.reports-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+}
+
+.reports-header {
+    margin-bottom: 22px;
+}
+
+.reports-title-zone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reports-title-zone .page-icon {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.reports-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.reports-subtitle {
+    color: var(--text-muted);
+    font-size: 0.83rem;
+    margin-top: 2px;
+}
+
+/* ── Controls Toolbar ── */
+.reports-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+}
+
+.report-filter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.report-presets {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.report-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.preset-btn {
+    padding: 7px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.preset-btn:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-main);
+}
+
+.preset-btn.active {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.report-source-filter .filter-select {
+    padding: 7px 12px;
+    background-color: var(--bg);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-family: var(--font-family);
+    outline: none;
+}
+
+.report-dates {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-light);
+    flex-wrap: wrap;
+}
+
+.date-input-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.date-input-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.admin-input {
+    padding: 6px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-family: var(--font-family);
+    outline: none;
+}
+
+.date-separator {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.btn-filter {
+    padding: 6px 12px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: background-color 0.15s;
+}
+
+.btn-filter:hover {
+    background-color: var(--primary-hover);
+}
+
+
+.btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-csv {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.25);
+}
+.btn-csv:hover {
+    background-color: rgba(16, 185, 129, 0.2);
+}
+
+.btn-pdf {
+    background-color: rgba(225, 29, 72, 0.1);
+    color: #e11d48;
+    border-color: rgba(225, 29, 72, 0.25);
+}
+.btn-pdf:hover {
+    background-color: rgba(225, 29, 72, 0.2);
+}
+
+/* ── Summary KPI Grid ── */
+.report-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 800px) {
+    .report-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .report-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.report-summary-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 74px;
+}
+
+.report-summary-value {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+}
+
+.report-summary-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* ── Charts Grid ── */
+.reports-charts-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.reports-charts-grid > * {
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .reports-charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.report-section {
+    background-color: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.section-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+}
+
+.section-title-row h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Daily Bar Chart */
+.chart-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 220px;
+    width: 100%;
+    scrollbar-width: thin;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    min-height: 210px;
+    padding: 24px 8px 12px;
+    min-width: max-content;
+}
+
+.chart-bars.chart-bars-stretch {
+    width: 100%;
+    min-width: 100%;
+}
+
+.chart-bar-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 48px;
+    width: 48px;
+    flex-shrink: 0;
+}
+
+.chart-bars.chart-bars-stretch .chart-bar-col {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 44px;
+}
+
+.chart-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.chart-bar {
+    width: 24px;
+    max-width: 28px;
+    border-radius: 4px 4px 2px 2px;
+    background-color: var(--primary);
+    transition: height 0.3s ease;
+    min-height: 4px;
+}
+
+.chart-bar-value {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chart-bar-label {
+    font-size: 0.70rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.chart-empty {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 32px 0;
+    width: 100%;
+}
+
+/* Project Breakdown */
+.project-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-bar-label {
+    min-width: 110px;
+    max-width: 140px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.project-bar-track {
+    flex: 1;
+    height: 18px;
+    background-color: var(--bg);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.project-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+.project-bar-hours {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+    min-width: 55px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ── Audit Table Section ── */
+.report-table-section {
+    padding: 18px;
+}
+
+.report-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    min-height: 380px;
+    contain: layout style;
+}
+
+.report-audit-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    text-align: left;
+}
+
+.report-audit-table thead th {
+    background-color: var(--surface-hover);
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-light);
+    white-space: nowrap;
+}
+
+.report-audit-table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+.report-audit-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.report-audit-table tbody tr:hover td {
+    background-color: var(--surface-hover);
+}
+
+/* ── Pagination ── */
+.logs-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+    min-height: 48px;
+    box-sizing: border-box;
+}
+
+.pagination-info {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.page-size-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.page-size-select {
+    padding: 4px 8px;
+    background-color: var(--bg);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-family: var(--font-family);
+    outline: none;
+    cursor: pointer;
+}
+
+.page-size-select:focus {
+    border-color: var(--primary);
+}
+
+.pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 32px;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    color: var(--text-main);
+    background-color: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background-color: var(--surface-hover);
+    border-color: var(--gray-400);
+}
+
+.page-btn.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.page-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.page-ellipsis {
+    padding: 0 4px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    user-select: none;
+}

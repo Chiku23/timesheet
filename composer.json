@@ -1,10 +1,10 @@
 {
-    "name": "chiku/corephp",
-    "description": "Basic Core PHP Application.",
+    "name": "chiku/timesheet",
+    "description": "A Time Keeping Web Application Built with PHP",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Chiku\\Corephp\\": "src/"
+            "Chiku\\TimeSheet\\": "src/"
         }
     },
     "authors": [
@@ -12,5 +12,7 @@
             "name": "Chiku"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/database": "^12.69"
+    }
 }
